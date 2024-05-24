@@ -56,29 +56,31 @@ function calcularMensualidad() {
     let interesTotal12 = cantidadPrestamo * (35 / 100);
     let interesTotal24 = cantidadPrestamo * (40 / 100);
     let interesTotal36 = cantidadPrestamo * (75 / 100);
+
+    let mensualidad = 0;
     //CALCULAR INTERES
     switch (tiempoPrestamo) {
         case "12":
-            console.log((Number(cantidadPrestamo) + (interesTotal12)) / 12);
+            mensualidad = (Number(cantidadPrestamo) + (interesTotal12)) / 12;
             break;
 
         case "24":
-            console.log((Number(cantidadPrestamo) + (interesTotal24)) / 24);
+            mensualidad = (Number(cantidadPrestamo) + (interesTotal24)) / 24;
             break;
 
         case "36":
-            console.log((Number(cantidadPrestamo) + (interesTotal36)) / 36);
+            mensualidad = (Number(cantidadPrestamo) + (interesTotal36)) / 36;
             break;
 
     }
-    return tiempoPrestamo
+    return mensualidad;
 }
 
 function mensualidades() {
-   // alert(tiempoPrestamo)
+    const mensualidad = calcularMensualidad();
     let mensualidades = document.getElementById("cuota_mensual");
-    mensualidades.innerText = (calcularMensualidad());
-    localStorage.setItem("mensualidades", JSON.stringify((calcularMensualidad())));
+    mensualidades.innerText = `$${mensualidad.toFixed(2)}`;
+    localStorage.setItem("mensualidades", JSON.stringify(mensualidad));
 };
 
 
