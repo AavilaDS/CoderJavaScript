@@ -9,17 +9,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./styles.css">
-    <title>Prentegra_2 </title>
+    <title>Simulador de Crédito </title>
 </head>
 
 <body>
     <section class="container ">
         <div class="row justify-conter-center align-items-center">
-
-            <form class=" formaPrestamo col-md-12 col-sm-12 col-lg-12 pb-5">
-                <h1>Cotizador "Prestamos que duelen"</h1>
+            <form class=" formaPrestamo col-md-12 col-sm-12 col-lg-12 pb-5" id="formulario_prestamo">
+                <h1 >Cotizador "Prestamos que duelen"</h1>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="full_name" placeholder="Juan Pérez Pérez" name="name">
+                    <input type="text" class="form-control" id="full_name" placeholder="Juan Pérez Pérez" name="name"
+                        required>
                     <label for="email_address">Nombre completo</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -35,14 +35,15 @@
                 <h6>Selecciona la cantidad que quieres que te robemos</h6>
                 <div class="input-group mb-3">
                     <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                    <input type="text" class="form-control" id="cantidad_prestamo"
+                        aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                 </div>
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected>12 meses</option>
-                        <option value="2">24 meses</option>
-                        <option value="3">36 meses</option>
+                        <option selected value="12">12 meses</option>
+                        <option value="24">24 meses</option>
+                        <option value="36">36 meses</option>
                     </select>
                     <label for="floatingSelect">Selecciona los meses de tu préstamo.</label>
                 </div>
@@ -50,11 +51,48 @@
                     <input type="checkbox" class="form-check-input" id="accept_ckeck_box">
                     <label class="form-check-label" for="accept_ckeck_box">Acepto pagar, si no, podré llorar</label>
                 </div>
-                <button type="submit" class="btn btn-outline-secondary w-100">Enviar</button>
-            </form>
+                <button type="submit" class="btn btn-outline-secondary w-100" id="mostrar_info"
+                    onclick=" guardarDatos(), cantidadDatos(), calcularPrestamo(), mensualidades(), calcularMensualidad()">Enviar</button>
+            </form> 
         </div>
     </section>
-    <script src="prentrega_2.js"></script>
+
+    <section class="container tableInfo">
+        <div class="row justify-conter-center align-items-center">
+            <table class="table col-md-12 col-sm-12 col-lg-12 pb-5">
+                    <h4 id="tituloSaludo" >Hola este es el resutado de tu prestamo.</h4>
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Resumen</th>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Monto préstamos:</th>
+                        <td id="cantidad"></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interes:</th>
+                        <td id="interes"></td>
+                    </tr>
+                    <tr>
+                        <th scope="total">Cantidad total:</th>
+                        <td id="total"></td>
+                    </tr>
+                    <tr>
+                        <th scope="tiempo">Tiempo préstamo:</th>
+                        <td id="meses"></td>
+                    </tr>
+                    <tr>
+                        <th scope="diferido">Lo que pagas al mes:</th>
+                        <td id="cuota_mensual"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script src="main.js"></script>
 </body>
 
 </html>
