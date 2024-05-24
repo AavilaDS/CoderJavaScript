@@ -52,7 +52,7 @@
                     <label class="form-check-label" for="accept_ckeck_box">Acepto pagar, si no, podré llorar</label>
                 </div>
                 <button type="submit" class="btn btn-outline-secondary w-100" id="mostrar_info"
-                    onclick=" guardarDatos(), cantidadDatos(), calcularPrestamo(), mensualidades(), calcularMensualidad()">Enviar</button>
+                    onclick=" guardarDatos(), cantidadDatos(), calcularTotal(), mensualidades(), calcularMensualidad(), retornoTotal(), retornoInteres()">Enviar</button>
             </form> 
         </div>
     </section>
@@ -85,7 +85,7 @@
                         <td id="meses"></td>
                     </tr>
                     <tr>
-                        <th scope="diferido">Lo que pagas al mes:</th>
+                        <th scope="diferido">Pagos mensuales:</th>
                         <td id="cuota_mensual"></td>
                     </tr>
                 </tbody>
