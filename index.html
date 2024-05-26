@@ -7,92 +7,249 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+    </style>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./styles.css">
-    <title>Simulador de Crédito </title>
+    <title>Préstamos que duelen</title>
 </head>
 
 <body>
-    <section class="container ">
-        <div class="row justify-conter-center align-items-center">
-            <form class=" formaPrestamo col-md-12 col-sm-12 col-lg-12 pb-5" id="formulario_prestamo">
-                <h1 >Cotizador "Prestamos que duelen"</h1>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="full_name" placeholder="Juan Pérez Pérez" name="name"
-                        required>
-                    <label for="email_address">Nombre completo</label>
+    <header>
+        <nav class="navbar fixed-top navbar-expand-lg ">
+            <div class="container-fluid">
+                <img src="img/logo.png" width="130" height="45" class="d-inline-block align-top" alt="">
+                <a class="navbar-brand" href="#"></a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"></a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        <a class="nav-link" href="#">Reportar a la policia</a>
+                    </span>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="phone" class="form-control" id="phone_number" placeholder="000-0000000" name="phone">
-                    <label for="phone_number">Teléfono</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="email_address" placeholder="name@example.com"
-                        name="email">
-                    <label for="phone_number">Correo electrónico</label>
-                </div>
-                <h2>Datos financieros</h2>
-                <h6>Selecciona la cantidad que quieres que te robemos</h6>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">$</span>
-                    <input type="text" class="form-control" id="cantidad_prestamo"
-                        aria-label="Amount (to the nearest dollar)">
-                    <span class="input-group-text">.00</span>
-                </div>
-                <div class="form-floating">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
-                        <option selected value="12">12 meses</option>
-                        <option value="24">24 meses</option>
-                        <option value="36">36 meses</option>
-                    </select>
-                    <label for="floatingSelect">Selecciona los meses de tu préstamo.</label>
-                </div>
-                <div class="mb-3 form-check pb-3 pt-2">
-                    <input type="checkbox" class="form-check-input" id="accept_ckeck_box">
-                    <label class="form-check-label" for="accept_ckeck_box">Acepto pagar, si no, podré llorar</label>
-                </div>
-                <button type="submit" class="btn btn-outline-secondary w-100" id="mostrar_info"
-                    onclick=" guardarDatos(), cantidadDatos(), calcularTotal(), mensualidades(), calcularMensualidad(), retornoTotal(), retornoInteres()">Enviar</button>
-            </form> 
+            </div>
+        </nav>
+    </header>
+
+    <section class="container-fluid">
+
+        <div id="bienvenida" class="row g-3 justify-conter-center align-items-center ">
+            <div class="col-md-12 col-sm-12 col-lg-12 pb-5  align-items-center">
+                <h1>¡Bienvenido a "Préstamos que Duelen"!</h1>
+            </div>
         </div>
     </section>
 
-    <section class="container tableInfo">
-        <div class="row justify-conter-center align-items-center">
-            <table class="table col-md-12 col-sm-12 col-lg-12 pb-5">
-                    <h4 id="tituloSaludo" >Hola este es el resutado de tu prestamo.</h4>
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">Resumen</th>
-                        <td></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Monto préstamos:</th>
-                        <td id="cantidad"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Interes:</th>
-                        <td id="interes"></td>
-                    </tr>
-                    <tr>
-                        <th scope="total">Cantidad total:</th>
-                        <td id="total"></td>
-                    </tr>
-                    <tr>
-                        <th scope="tiempo">Tiempo préstamo:</th>
-                        <td id="meses"></td>
-                    </tr>
-                    <tr>
-                        <th scope="diferido">Pagos mensuales:</th>
-                        <td id="cuota_mensual"></td>
-                    </tr>
-                </tbody>
-            </table>
+
+    <section class="container" id="descrpcioServicio">
+        <div class="row g-3 justify-conter-center align-items-center ">
+
+            <div id="solucionInfo" class="col-md-6 col-sm-12 col-lg-6 pb-5">
+
+                <h2>Tu solución rápida y dolorosa para obtener dinero.</h2>
+                <p>Sabemos que la vida puede ser costosa y, a veces, necesitas un poco de dinero extra para salir
+                    adelante. Aquí en "Préstamos que Duelen", estamos más que dispuestos a ayudarte... ¡y a
+                    aprovecharnos un poco de ti en el proceso!
+                </p>
+            </div>
+            <div class="col-md-6 col-sm-12 col-lg-6 pb-5">
+                <img class="img-fluid" src="img/ilustracion_1.png" />
+            </div>
         </div>
     </section>
+
+    <section class="container" id="elegirnosSection">
+        <div class="row justify-conter-center align-items-center">
+            <section class="container">
+                <div class="row g-3 justify-conter-center align-items-center">
+                    <div class="col-md-6 col-sm-12 col-lg-8 pb-5">
+                        <h2>¿Por qué elegirnos?</h2>
+                        <p>
+                            <b>Préstamos rápidos y fáciles:</b> Obtén el dinero que necesitas en cuestión de minutos.
+                            Sin papeleo
+                            complicado ni esperas interminables.
+                            <br><br>
+                            <b>Intereses que te harán llorar:</b> Nuestros intereses son tan altos que pensarás dos
+                            veces antes de
+                            pedir otro préstamo. ¡Nos aseguramos de que nunca olvides la experiencia!
+                            <br><br>
+                            <b>Pagos mensuales que duelen:</b> Nuestros planes de pago están diseñados para que sientas
+                            cada
+                            centavo que nos debes. ¿No puedes pagar? ¡No te preocupes, simplemente añadiremos más
+                            intereses!
+                        </p>
+                        <br><br>
+                        <h3>¿Cómo funciona?</h3>
+                        <p><b>Solicita tu préstamo:</b> Rellena nuestro sencillo formulario en línea. ¡Es tan fácil que
+                            hasta tu
+                            gato podría hacerlo!
+                            <br>
+                            <b>Recibe tu dinero:</b> En menos tiempo del que tardas en decir "me duele", el dinero
+                            estará en tu
+                            cuenta.
+                            <br>
+                            <b>Llora un poco:</b> Con cada pago, sentirás la picadura de nuestros altos intereses, pero
+                            eso solo te
+                            hará más fuerte, ¿verdad?
+                            <br>
+                            <i><b>Aviso Legal:</b> En "Préstamos que Duelen" no nos responsabilizamos de las lágrimas,
+                                noches sin
+                                dormir, o cualquier otro tipo de sufrimiento que puedas experimentar debido a nuestros
+                                altísimos
+                                intereses. ¡Pero oye, te advertimos!</i>
+
+                        <p>¡Solicita tu préstamo hoy y experimenta el dolor de nuestra ayuda financiera!</p>
+                        <br>
+                        <p><b>"Préstamos que Duelen" </b>- Porque si no duele, no es real.</p>
+                    </div>
+                    <div class="col-md-3 col-sm-12 col-lg-3 pb-5">
+                        <img src="img/bienvenida_2.png" id="imagenBienvenida2" />
+                    </div>
+                </div>
+
+            </section>
+
+            <form class=" formaPrestamo col-md-12 col-sm-12 col-lg-12 pb-5 needs-validation" novalidate
+                id="formulario_prestamo">
+                <div>
+                    <h4>Simula tu DEUDA</h4>
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="full_name" placeholder="Juan Pérez Pérez"
+                                name="name" required>
+                            <label for="email_address">Nombre completo</label>
+
+                            <div class="invalid-feedback">
+                                Escribe tu nombre.
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="phone" class="form-control" id="phone_number" placeholder="000-0000000"
+                                name="phone" required>
+                            <label for="phone_number">Teléfono</label>
+
+                            <div class="invalid-feedback">
+                                Escribe tu teléfono.
+                            </div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email_address" placeholder="name@example.com"
+                                name="email" required>
+                            <label for="phone_number">Correo electrónico</label>
+
+                            <div class="invalid-feedback">
+                                Escribe tu correo electónico.
+                            </div>
+                        </div>
+
+                        <div id="simuladorCredito">
+                            <h4>Datos financieros</h4>
+                            <h6>Selecciona la cantidad que quieres que te robemos</h6>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" id="cantidad_prestamo"
+                                    aria-label="Amount (to the nearest dollar)" required>
+                                <span class="input-group-text">.00</span>
+
+                                <div class="invalid-feedback">
+                                    Selecciona la cantidad que necesitas.
+                                </div>
+                            </div>
+                            <div class="form-floating" required>
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example" required>
+                                    <option value="12">12 meses</option>
+                                    <option value="24">24 meses</option>
+                                    <option value="36">36 meses</option>
+                                </select>
+                                <label for="floatingSelect">Selecciona los meses de tu préstamo.</label>
+
+                                <div class="invalid-feedback">
+                                    Selecciona la cantidad de meses.
+                                </div>
+                            </div>
+                            <div class="mb-3 form-check pb-3 pt-2">
+
+
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button disabled class="btn btn-primary w-100" type="submit"
+                                id="mostrar_info">ENDEUDARME</button>
+                        </div>
+
+                    </form>
+                </div>
+    </section>
+
+    <section class="container tableInfo" id="tablaFinanciera">
+        <div class="row g-3 justify-conter-center align-items-center">
+            <div class="col-md-6 col-sm-12 col-lg-8 pb-5">
+                <table class="table ">
+                    <h4 id="tituloSaludo">Hola este es el resutado de tu prestamo.</h4>
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Resumen</th>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Monto préstamos:</th>
+                            <td id="cantidad"></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Interes:</th>
+                            <td id="interes"></td>
+                        </tr>
+                        <tr>
+                            <th scope="total">Cantidad total:</th>
+                            <td id="total"></td>
+                        </tr>
+                        <tr>
+                            <th scope="tiempo">Tiempo préstamo:</th>
+                            <td id="meses"></td>
+                        </tr>
+                        <tr>
+                            <th scope="diferido">Pagos mensuales:</th>
+                            <td id="cuota_mensual"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6 col-sm-12 col-lg-3 pb-5">
+                <img class="img-fluid" src="img/imagen_tabla.png" />
+            </div>
+
+        </div>
+    </section>
+
+
     <script src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
