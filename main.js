@@ -1,9 +1,77 @@
 
+///MOSTRAR TABLA
+function mostrarTabla() {
+    document.getElementById("tablaFinanciera").style.display = "block";
+}
+
+
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+
+///DESHABILITAR
+const boton = document.getElementById("mostrar_info");
+boton.addEventListener("click", () => {
+    guardarDatos(), cantidadDatos(), calcularTotal(), mensualidades(), calcularMensualidad(), retornoTotal(), retornoInteres(), mostrarTabla()
+});
+
+let formularioCompleto = document.querySelector("#formulario_prestamo");
+let mostrarBoton = document.querySelector("#mostrar_info");
+
+formularioCompleto.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+})
+
+
+
+function validar() {
+    let desabilitar = false;
+    if (formularioCompleto.full_name.value === "") {
+        desabilitar = true;
+    }
+
+    if (formularioCompleto.phone_number.value === "") {
+        desabilitar = true;
+    }
+
+    if (formularioCompleto.email_address.value === "") {
+        desabilitar = true;
+    }
+
+    if (formularioCompleto.cantidad_prestamo.value === "") {
+        desabilitar = true;
+    }
+
+    if (desabilitar === true) {
+        mostrarBoton.disabled = true;
+    } else {
+        mostrarBoton.disabled = false;
+    }
+};
+formularioCompleto.addEventListener("keyup", validar);
+
 
 //DATOS PERSONALES DEL USUARIO
 function guardarDatos() {
 
-    event.preventDefault();
+    //event.preventDefault();
     let nombreUsuario = document.getElementById("full_name").value;
     let telefonoUsuario = document.getElementById("phone_number").value;
     let correoUsuario = document.getElementById("email_address").value;
@@ -28,7 +96,7 @@ function cantidadDatos() {
     let tiempoPrestamo = document.getElementById("floatingSelect").value;
     let meses = document.getElementById("meses");
     titulo.innerText = "Hola " + nombreUsuario + " este es el resutado de tu prestamo.";
-    monto.innerText = "$"+ cantidadPrestamo;
+    monto.innerText = "$" + cantidadPrestamo + ".00";
     meses.innerText = tiempoPrestamo + (" meses");
 }
 ///CALCULAR INTERES
@@ -60,7 +128,7 @@ function calcularInteres() {
 function retornoInteres() {
     const interesFinal = calcularInteres();
     let interes = document.getElementById("interes");
-    interes.innerText = `$${interesFinal .toFixed(2)}`;
+    interes.innerText = `$${interesFinal.toFixed(2)}`;
     localStorage.setItem("Interes", JSON.stringify(interesFinal));
 };
 
@@ -70,7 +138,7 @@ function calcularTotal() {
     let cantidadPrestamo = document.getElementById("cantidad_prestamo").value;
     const tiempoPrestamo = document.getElementById("floatingSelect").value;
     //let montoTotal = document.getElementById("total");
-   // let interes = document.getElementById("interes");
+    // let interes = document.getElementById("interes");
     //INTERESES VALORES
     let interesTotal12 = cantidadPrestamo * (35 / 100);
     let interesTotal24 = cantidadPrestamo * (40 / 100);
@@ -93,9 +161,9 @@ function calcularTotal() {
     return sumaTotal
 };
 function retornoTotal() {
-    const sumaTotal  = calcularTotal();
+    const sumaTotal = calcularTotal();
     let montoTotal = document.getElementById("total");
-    montoTotal.innerText = `$${sumaTotal .toFixed(2)}`;
+    montoTotal.innerText = `$${sumaTotal.toFixed(2)}`;
     localStorage.setItem("Pago total", JSON.stringify(sumaTotal));
 };
 
