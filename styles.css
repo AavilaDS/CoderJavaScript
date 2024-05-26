@@ -1,17 +1,126 @@
-
-
-.formaPrestamo {
-    padding-left: 10%;
-    padding-right: 10% ;
-    padding-top: 10%;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
+
+body {
+
+    background: linear-gradient(rgb(12, 12, 106), #0f3ac7);
+    height: 100%;
+
+}
+
+h1 {
+    color: #ffffff;
+}
+
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    color: aliceblue;
+}
+
+
+
+#bienvenida {
+    margin-top: 48px;
+    padding-bottom: 2%;
+    height: 500px;
+    text-align: center;
+    background-color: rgb(173, 214, 242);
+    width: 100%;
+    background-image: url("img/inicio_bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 0;
+    margin: 0;
+
+}
+
+
+
+
 .formaPrestamo h2 {
     padding-top: 5%;
     padding-bottom: 3%;
 }
+
 .tableInfo {
-padding-top: 5%;
-padding-left: 10%;
-padding-right: 10%;
-margin-bottom: 10%;
+    padding-top: 5%;
+    margin-bottom: 10%;
+}
+
+#tablaFinanciera {
+    display: none;
+}
+
+.navbar {
+    background-color: #8fabf3;
+}
+
+
+#mostrar_info:hover {
+    background-color: rgb(25, 83, 159);
+}
+
+#mostrar_info:disabled {
+    background-color: rgba(255, 255, 255, 0.76);
+}
+
+#mostrar_info:active {
+    background-color: rgb(13, 51, 126);
+}
+
+
+#imagenBienvenida2 {
+    height: 400px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+#simuladorCredito {
+    padding-top: 5%;
+
+}
+
+#formulario_prestamo {
+    padding-top: 5%;
+    padding: 2%;
+    padding-right: 2%;
+}
+
+#descrpcioServicio {
+    margin-top: 5%;
+    padding: 2%;
+    padding-right: 2%;
+}
+
+#elegirnosSection {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#solucionInfo {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+#tablaFinanciera {
+    padding-left: 40px;
+    padding-right: 40px;
 }
